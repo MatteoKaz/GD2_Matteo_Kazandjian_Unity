@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
 
     private float _shootRange = 100f;
@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
         {
             Shooting();
         }
-        
+        Debug.DrawRay(transform.position, _forwardPlayer * 150f, Color.green);
         
     }
 
