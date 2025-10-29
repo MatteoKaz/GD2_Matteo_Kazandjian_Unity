@@ -42,5 +42,8 @@ DevLog:
 Objectif :-Implementer les movements 
           -Le tir 
           -Ameliorer la caméra 
+          
 La base des movements a été implementer, mais je n'arrive pas a obtenir un bon feeling
 J'ai la base de tir, maintenant je dois appliquer les dégats au énnemis je le ferais ce soir, en ameliorant aussi le feeling de la caméra 
+Les dégats sont appliqué et le tir fonctionne j'ai opté au final pour un spawn d'un component qui check lui meme la collision
+Si j'ajoute une amelioration j'utiliserai peut etre un ray cast.
