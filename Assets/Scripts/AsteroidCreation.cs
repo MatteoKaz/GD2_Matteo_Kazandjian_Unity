@@ -1,10 +1,13 @@
 using System.Globalization;
 using UnityEngine;
+using System.Collections;
 
 public class AsteroidCreation : MonoBehaviour
 {
     [SerializeField] public int n_numbertoSpawn = 3;
     [SerializeField] public GameObject _AsteroidChild;
+    private float _shadowDuration = 0.05f;
+
     //Fonction actier à chaque activation du MonoBehaviour
     private void OnEnable()
     {
@@ -20,11 +23,20 @@ public class AsteroidCreation : MonoBehaviour
     }
     private void SpawnNewWall(Vector3 _DeathLocation)
     {
-       // while (n_numbertoSpawn=0) 
-        
-            Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
+        for (int i = 3; i > 0; i--)
+        {
 
-     
+            StartCoroutine(ShadowTimerControl());
+        }
+    }
+    private IEnumerator ShadowTimerControl()
+    //vous pouvez mettre un delay dans une fonction, 
+    {
         
+        Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
+        Rigidbody _rb = _AsteroidChild.GetComponent<Rigidbody>();
+        var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-45.0f, 45.0f));
+        _rb.AddForce(position * 25, ForceMode.Impulse);
+        yield return new WaitForSeconds(_shadowDuration);
     }
 }

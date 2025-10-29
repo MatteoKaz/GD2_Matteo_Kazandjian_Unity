@@ -33,11 +33,11 @@ public class PlayerMovement : MonoBehaviour
         _verticalMovement = Input.GetAxis("Vertical");
         //_movement = new Vector3(0f, 0f, _verticalMovement);
         _ForwardMovement = Mathf.Clamp(_verticalMovement, 0.1f, 1f);
-        GrappinUpdateDiraction(_movement); //Direction donné à la fonction grappin
+        GrappinUpdateDiraction(_movement); //Direction donnï¿½ ï¿½ la fonction grappin
                                            // _movement.Normalize();
                                            //_movement *= _speed;
                                            //_movement.y = _rb.linearVelocity.y;
-                                           //Pousser des élements comme asteroide
+                                           //Pousser des ï¿½lements comme asteroide
         _pushDirection = _CurrentSpeed * 1.5f;
         // _rotator = new Vector3(0f, 0f, _horizontalMovement);
         // _rotator.Normalize();
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         _CurrentSpeed = (transform.forward * _ForwardMovement * _speed);
 
         if (Input.GetKey(KeyCode.Space)) // touche frein
-            _rb.AddForce(-_rb.velocity * _brakeFactor, ForceMode.Force);
+            _rb.AddForce(-_rb.linearVelocity * _brakeFactor, ForceMode.Force);
     }
 
     void FixedUpdate()
@@ -78,10 +78,10 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(_rotator * _Rotspeed * Time.deltaTime);
 
         //clamp pour eviter une vitesse trop haute vu qu'on utilise un add force
-        float _CurrentVel = _rb.velocity.magnitude;
+        float _CurrentVel = _rb.linearVelocity.magnitude;
         if (_CurrentVel > _maxSpeed)
         {
-            _rb.velocity = _rb.velocity.normalized * _maxSpeed;
+            _rb.linearVelocity = _rb.linearVelocity.normalized * _maxSpeed;
         }
 
       

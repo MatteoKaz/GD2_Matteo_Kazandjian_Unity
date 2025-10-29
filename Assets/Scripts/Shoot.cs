@@ -8,12 +8,10 @@ public class Shoot : MonoBehaviour
     private float _Cadency = 0.25f;
     private Vector3 _forwardPlayer;
     private Vector3 _Hitloc;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] public Transform _firepoint;
+    [SerializeField] public GameObject _bullet;
+    [SerializeField] public float _bulletForce = 20f;
+   
     // Update is called once per frame
     void Update()
     {
@@ -28,13 +26,9 @@ public class Shoot : MonoBehaviour
     }
 
     private void Shooting()
-    { 
-         RaycastHit hit;
-        if (Physics.Raycast(transform.position,
-            _forwardPlayer, out hit, _shootRange)) 
-        {
-            Debug.DrawRay(transform.position, _forwardPlayer * 150f, Color.green);
-            _Hitloc = hit.point + hit.normal* 1.5f;
-        }
-       }
+    {
+        GameObject bulletRef = Instantiate(_bullet, _firepoint.position, _firepoint.rotation);
+        Rigidbody _rb = bulletRef.GetComponent<Rigidbody>();
+        _rb.AddForce(-_firepoint.up * _bulletForce, ForceMode.Impulse);
+    }
 }
