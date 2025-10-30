@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSpeed = 25f;
     private Vector3 _CurrentSpeed;
     private float _brakeFactor = 0.1f;
+    private Vector3 m_EulerAngleVelocity = new Vector3(0,65, 0);
 
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
+       
 
 
     }
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
         //_movement = new Vector3(0f, 0f, _verticalMovement);
-        _ForwardMovement = Mathf.Clamp(_verticalMovement, 0.1f, 1f);
+        _ForwardMovement = Mathf.Clamp(_verticalMovement, -0.25f, 1f);
         GrappinUpdateDiraction(_movement); //Direction donn� � la fonction grappin
                                            // _movement.Normalize();
                                            //_movement *= _speed;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         // _rotator.Normalize();
         //_rotator *= _Rotspeed;
         _CurrentSpeed = (transform.forward * _ForwardMovement * _speed);
+        
 
         if (Input.GetKey(KeyCode.Space)) // touche frein
             _rb.AddForce(-_rb.linearVelocity * _brakeFactor, ForceMode.Force);
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        Quaternion deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * Time.fixedDeltaTime);
+        Quaternion deltaRotationRight = Quaternion.Euler(-m_EulerAngleVelocity * Time.fixedDeltaTime);
         if (_rb != null)
         {
             //_rb.linearVelocity = _movement;
@@ -72,11 +76,20 @@ public class PlayerMovement : MonoBehaviour
             ThrowGrappin();
         }
         //Rotation droite gauche 
-        if (Input.GetKey(KeyCode.A)) _rotator = Vector3.down;
-        else if (Input.GetKey(KeyCode.D)) _rotator = Vector3.up;
-        else _rotator = Vector3.zero;
-        transform.Rotate(_rotator * _Rotspeed * Time.deltaTime);
+        //if (Input.GetKey(KeyCode.A)) _rotator = Vector3.down;
+        //else if (Input.GetKey(KeyCode.D)) _rotator = Vector3.up;
+        //else _rotator = Vector3.zero;
+        //transform.Rotate(_rotator * _Rotspeed * Time.deltaTime);
 
+        if (Input.GetKey(KeyCode.A))
+        {
+            _rb.MoveRotation(_rb.rotation * deltaRotationRight);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            _rb.MoveRotation(_rb.rotation * deltaRotation);
+        }
+            
         //clamp pour eviter une vitesse trop haute vu qu'on utilise un add force
         float _CurrentVel = _rb.linearVelocity.magnitude;
         if (_CurrentVel > _maxSpeed)
