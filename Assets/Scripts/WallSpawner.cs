@@ -9,14 +9,14 @@ public class WallSpawner : MonoBehaviour
     private void OnEnable()
     {
         //Bind entre la fonction update et l'action target collected 
-        PlayerCollect.OnTargetCollected += SpawnNewWall;
+        //PlayerCollect.OnTargetCollected += SpawnNewWall;
 
     }
     //Fonction appellé lors de la desactivation du monoBehaviour
     private void OnDisable()
     {
         //Unbind
-        PlayerCollect.OnTargetCollected -= SpawnNewWall;
+        //PlayerCollect.OnTargetCollected -= SpawnNewWall;
     }
     private void SpawnNewWall(int score)
     {

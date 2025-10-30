@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
     {
        camPos = _player.transform.position;
         //transform.position = new Vector3 ( camPos.x, 20f, camPos.z) + _offset;
-       Vector3 targetPosition = new Vector3(camPos.x, 20f, camPos.z);
+       Vector3 targetPosition = new Vector3(camPos.x, 40f, camPos.z);
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothtime);
         transform.rotation = Quaternion.Euler ( customRot);
         

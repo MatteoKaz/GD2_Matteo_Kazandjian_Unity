@@ -3,7 +3,8 @@ using UnityEngine;
 public class Attractionearth : MonoBehaviour
 {
     public float _HookRadius = 2f;
-    
+    public PlayerMovement _Playermovement;
+    private bool _hasAccellerate = false;
 
     public Transform attachRoot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,13 +33,36 @@ public class Attractionearth : MonoBehaviour
             if (dist < _HookRadius )
             {
                 Vector3 dir = (attachRoot.position - _rockRb.position).normalized;
-                Vector3 force = dir / dist * 25f;
+                Vector3 force = dir / dist * 18f;
                 _rockRb.AddForce(force, ForceMode.Force);
                 Debug.Log("J'attire");
             }
         }
 
 
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_Playermovement != null)
+        {
+            
+            if (_hasAccellerate == false)
+            {
+                
+                _Playermovement.Accelarate();
+                _hasAccellerate = true;
+            } 
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (_Playermovement != null)
+        {
+            _Playermovement.Decelerate();
+            _hasAccellerate = false;
+        }
 
     }
 }

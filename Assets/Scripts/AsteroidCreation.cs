@@ -6,7 +6,7 @@ public class AsteroidCreation : MonoBehaviour
 {
     [SerializeField] public int n_numbertoSpawn = 3;
     [SerializeField] public GameObject _AsteroidChild;
-    private float _shadowDuration = 0.05f;
+    private float _shadowDuration = 0.2f;
 
     //Fonction actier à chaque activation du MonoBehaviour
     private void OnEnable()
@@ -35,8 +35,10 @@ public class AsteroidCreation : MonoBehaviour
         
         Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
         Rigidbody _rb = _AsteroidChild.GetComponent<Rigidbody>();
+        
         var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-45.0f, 45.0f));
-        _rb.AddForce(position * 25, ForceMode.Impulse);
+        _rb.AddForce(position * 85, ForceMode.Impulse);
+        
         yield return new WaitForSeconds(_shadowDuration);
     }
 }

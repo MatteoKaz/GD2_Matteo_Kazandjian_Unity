@@ -2,7 +2,7 @@ using System;
 using System.Xml.Linq;
 using UnityEngine;
 
-public class HitCube : MonoBehaviour
+public class HitCubeLittle : MonoBehaviour
 {
     private int _life = 3;
     [SerializeField] private int _targetValue = 1;
@@ -32,8 +32,7 @@ public class HitCube : MonoBehaviour
             }
             else
             {
-                _DeathLocation = transform.position;
-                OnAsteroidDestroy?.Invoke(_DeathLocation);
+                
                 Destroy(gameObject);
                 
             }

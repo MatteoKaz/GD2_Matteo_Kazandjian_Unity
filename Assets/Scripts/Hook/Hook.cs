@@ -29,6 +29,8 @@ public class Hook : MonoBehaviour
                 attachedRocks.RemoveAt(attachedRocks.Count - 1);
                 last.mass = 4f;
                 last.linearDamping = 0.8f;
+                
+                last.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY; ;
                 Destroy(last.GetComponent<Joint>());
             }
 
@@ -49,7 +51,7 @@ public class Hook : MonoBehaviour
 
 
                         //  Attraction douce
-                        if (dist < _HookRadius && !attachedRocks.Contains(_rockRb) && other.CompareTag("AsteroidHook"))
+                        if (dist < _HookRadius && !attachedRocks.Contains(_rockRb) && other.CompareTag("AsteroidHook") && (Input.GetKey(KeyCode.E)) )
                         {
                             Vector3 dir = (attachRoot.position - _rockRb.position).normalized;
                             float force = Mathf.Lerp(20f, 0f, 1f - dist / _HookRadius);
@@ -73,7 +75,7 @@ public class Hook : MonoBehaviour
         {
 
  
-        if (!attachedRocks.Contains(_rock))
+        if (!attachedRocks.Contains(_rock) && (Input.GetKey(KeyCode.E)))
         {
             
             var joint = _rock.gameObject.AddComponent<FixedJoint>();

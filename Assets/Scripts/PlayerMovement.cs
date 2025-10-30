@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
         //_movement = new Vector3(0f, 0f, _verticalMovement);
-        _ForwardMovement = Mathf.Clamp(_verticalMovement, -0.25f, 1f);
+        _ForwardMovement = Mathf.Clamp(_verticalMovement, -0.45f, 1f);
         GrappinUpdateDiraction(_movement); //Direction donn� � la fonction grappin
                                            // _movement.Normalize();
                                            //_movement *= _speed;
@@ -97,7 +97,11 @@ public class PlayerMovement : MonoBehaviour
             _rb.linearVelocity = _rb.linearVelocity.normalized * _maxSpeed;
         }
 
-      
+        if (_CurrentVel < 4)
+        {
+            _speed = 5f;
+            _maxSpeed = 10f;
+        }
 
     }
 
@@ -127,5 +131,18 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = _grappinHit;
         _grappinDirection = Vector3.zero;
+    }
+
+    public void Accelarate()
+    {
+        _speed = Mathf.Clamp(_speed +3, 0, 30);
+        _maxSpeed *=  +3;
+        _maxSpeed =Mathf.Clamp(_maxSpeed, 0, 50);
+    }
+
+    public void Decelerate()
+    {
+        
+        
     }
 }
