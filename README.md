@@ -47,3 +47,10 @@ La base des movements a été implementer, mais je n'arrive pas a obtenir un bon
 J'ai la base de tir, maintenant je dois appliquer les dégats au énnemis je le ferais ce soir, en ameliorant aussi le feeling de la caméra 
 Les dégats sont appliqué et le tir fonctionne j'ai opté au final pour un spawn d'un component qui check lui meme la collision
 Si j'ajoute une amelioration j'utiliserai peut etre un ray cast.
+
+
+30/10
+Ajout de l'aimant, puis modification de la maniabilité, et systeme de points lorsqu'il lache les asteroides sur la terre 
+La mort du joueur si y a le temps 
+
+
