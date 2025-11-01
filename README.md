@@ -53,4 +53,6 @@ Si j'ajoute une amelioration j'utiliserai peut etre un ray cast.
 Ajout de l'aimant, puis modification de la maniabilité, et systeme de points lorsqu'il lache les asteroides sur la terre 
 La mort du joueur si y a le temps 
 
+31/10 
 
+Ajout d'une mort pour le joueur et du menu de mort, et des spawner d'asteroides. 
