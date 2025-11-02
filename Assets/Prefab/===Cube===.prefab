@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 145618994097141394}
   - component: {fileID: 2015425847550600297}
   - component: {fileID: 8823855030605420956}
-  - component: {fileID: 1919804511538836815}
   - component: {fileID: 6376243773828782213}
+  - component: {fileID: 5050540411348901204}
   m_Layer: 0
   m_Name: ===Cube===
-  m_TagString: Untagged
+  m_TagString: Astroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.92, y: 1.1, z: -1.98}
-  m_LocalScale: {x: 2.0015848, y: 2.0015848, z: 2.0015848}
+  m_LocalScale: {x: 4.064019, y: 4.064019, z: 4.064019}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5456629324758591223}
@@ -56,7 +56,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.37, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2015425847550600297
 MonoBehaviour:
@@ -71,6 +71,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetValue: 1
+  _Explosion: {fileID: 6406745654314614994, guid: 7bd94fa6b19e658429f235694268f7ff, type: 3}
+  _player: {fileID: 4333751191485064512, guid: 4395a6e8dffbab047a1ff1ac69c92f86, type: 3}
+  n_numbertoSpawn: 3
+  _AsteroidChild: {fileID: 5479953281250828080, guid: d8e6d2fc5e5662540b6860d72ea34acb, type: 3}
+  _Life: {fileID: 6259624126728161385, guid: 8b86e15ee5ec3c74cb51fdd83372ee28, type: 3}
 --- !u!54 &8823855030605420956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,7 +84,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579404581054578383}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -93,25 +98,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &1919804511538836815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579404581054578383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09225e0a67ded340aafa74a360a9c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  n_numbertoSpawn: 3
-  _AsteroidChild: {fileID: 5479953281250828080, guid: d8e6d2fc5e5662540b6860d72ea34acb, type: 3}
 --- !u!82 &6376243773828782213
 AudioSource:
   m_ObjectHideFlags: 0
@@ -209,6 +200,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5050540411348901204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579404581054578383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126b451185284624db8f4ca36c95717b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Damage: 1
 --- !u!1 &8766443267194979743
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 8766443267194979743}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.007, y: 0.074, z: 0.059}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 0.68505716, y: 0.68505716, z: 0.68505716}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -283,7 +287,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -790307923
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bcc2457ae0f5dcc4d83f27691f5b17ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

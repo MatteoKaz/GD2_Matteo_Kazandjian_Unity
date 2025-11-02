@@ -33,7 +33,7 @@ public class Attractionearth : MonoBehaviour
             if (dist < _HookRadius )
             {
                 Vector3 dir = (attachRoot.position - _rockRb.position).normalized;
-                Vector3 force = dir / dist * 18f;
+                Vector3 force = dir / dist * 16f;
                 _rockRb.AddForce(force, ForceMode.Force);
                 Debug.Log("J'attire");
             }

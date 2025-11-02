@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] public Transform _firepoint;
     [SerializeField] public GameObject _bullet;
     [SerializeField] public float _bulletForce = 20f;
-   
+    [SerializeField] private CameraFollow _CamRef;
     // Update is called once per frame
     void Update()
     {
@@ -30,5 +30,6 @@ public class Shoot : MonoBehaviour
         GameObject bulletRef = Instantiate(_bullet, _firepoint.position, _firepoint.rotation);
         Rigidbody _rb = bulletRef.GetComponent<Rigidbody>();
         _rb.AddForce(-_firepoint.up * _bulletForce, ForceMode.Impulse);
+        _CamRef.shakeDuration = 0.025f;
     }
 }

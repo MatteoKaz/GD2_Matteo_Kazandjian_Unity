@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     private float _Cadency = 0.25f;
     private Vector3 _forwardPlayer;
     private Vector3 _Hitloc;
+    [SerializeField] private CameraFollow _CamRef;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

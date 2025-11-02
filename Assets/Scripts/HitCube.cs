@@ -1,6 +1,8 @@
-using System;
+
 using System.Xml.Linq;
 using UnityEngine;
+using System.Collections;
+using System.Globalization;
 
 public class HitCube : MonoBehaviour
 {
@@ -11,8 +13,27 @@ public class HitCube : MonoBehaviour
     private float impulseValue = 2;
     private Vector3 _playerVectorForward;
     private Vector3 _DeathLocation;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public static Action<Vector3> OnAsteroidDestroy;
+    private Vector3 spawnPos;
+     [SerializeField] private GameObject _Explosion;
+    [SerializeField] private GameObject _player;
+    [SerializeField] public int n_numbertoSpawn = 3;
+    private float _shadowDuration = 0.04f;
+    [SerializeField] public GameObject _AsteroidChild;
+    [SerializeField] public GameObject _Life;
+    private Vector3 _RotationSprite = new Vector3(90, 0, 0);
+    private Quaternion newQuat = new Quaternion();
+
+    void Start()
+    {
+        newQuat.eulerAngles = _RotationSprite;
+        Vector3 playerPos = GameObject.Find("===Player===").GetComponent<PlayerMovement>().transform.position;
+        _rb = GetComponent<Rigidbody>();
+         spawnPos =  _rb.transform.position;
+        float dist = Vector3.Distance(playerPos, spawnPos);
+        Vector3 dir = (playerPos - spawnPos).normalized;
+        Vector3 force = dir / dist * 650f;
+        _rb.AddForce(force * 45, ForceMode.Force);
+    }
 
 
     private void OnCollisionEnter(Collision other)
@@ -26,6 +47,7 @@ public class HitCube : MonoBehaviour
                 if(other.gameObject.GetComponent<PlayerCollect>() != null)
                 PushCube(150);
                 Debug.Log("Touché");
+                
 
 
 
@@ -33,25 +55,64 @@ public class HitCube : MonoBehaviour
             else
             {
                 _DeathLocation = transform.position;
-                OnAsteroidDestroy?.Invoke(_DeathLocation);
-                Destroy(gameObject);
+                //OnAsteroidDestroy?.Invoke(_DeathLocation);
+                SpawnNewWall(_DeathLocation);
+                Instantiate(_Explosion, transform.position, newQuat);
+                
                 
             }
         }
-        if (other.gameObject.GetComponent<PlayerCollect>() != null)
+        
+            
+    }
+    private void SpawnNewWall(Vector3 _DeathLocation)
+    {
+        for (int i = 3; i > 0; i--)
         {
-            
-            
-            Destroy(gameObject);
-            other.gameObject.GetComponent<PlayerCollect>().UpdateScore(_targetValue);
-            Debug.Log("kk");
+
+            StartCoroutine(ShadowTimerControl());
+            n_numbertoSpawn--;
+
+            if (n_numbertoSpawn == 1)
+            {
+                int _Random = Random.Range(0, 4);
+                
+                if (_Random == 0)
+                {
+                    Instantiate(_Life, transform.position, newQuat);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                Destroy(gameObject);
+            }
         }
-            
+        
+        
+    }
+    private IEnumerator ShadowTimerControl()
+    //vous pouvez mettre un delay dans une fonction, 
+    {
+
+        Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
+        Rigidbody _rb = _AsteroidChild.GetComponent<Rigidbody>();
+
+        var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-75.0f, 75.0f));
+        _rb.AddForce(position * 250, ForceMode.Impulse);
+        n_numbertoSpawn--;
+
+        
+            yield return new WaitForSeconds(_shadowDuration);
+        
+
+       
     }
 
     private void PushCube(float impulse)
     {
-            _rb =GetComponent<Rigidbody>();
-            _rb.AddForce(_playerVectorForward * impulseValue,ForceMode.Impulse);
+        _rb = GetComponent<Rigidbody>();
+        _rb.AddForce(_playerVectorForward * impulseValue,ForceMode.Impulse);
     }
 }

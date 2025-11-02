@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class Hook : MonoBehaviour
 {
 
-    private float _HookCapacity = 5f;
+    private float _HookCapacity = 3f;
     public float _HookRadius = 12f;
     public float _attachDistance = 5f;
     public Transform attachRoot;
@@ -27,9 +27,8 @@ public class Hook : MonoBehaviour
             {
                 Rigidbody last = attachedRocks[attachedRocks.Count - 1];
                 attachedRocks.RemoveAt(attachedRocks.Count - 1);
-                last.mass = 4f;
+                last.mass = 2.5f;
                 last.linearDamping = 0.8f;
-                
                 last.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY; ;
                 Destroy(last.GetComponent<Joint>());
             }
@@ -72,56 +71,64 @@ public class Hook : MonoBehaviour
     }
    
     void AttachRock(Rigidbody _rock)
+    {
+        if (attachedRocks.Count <= _HookCapacity)
         {
 
- 
-        if (!attachedRocks.Contains(_rock) && (Input.GetKey(KeyCode.E)))
-        {
-            
-            var joint = _rock.gameObject.AddComponent<FixedJoint>();
-            Debug.Log("J'attache");
-            if (attachedRocks.Count > 0)
+
+
+            if (!attachedRocks.Contains(_rock) && (Input.GetKey(KeyCode.E)))
             {
-                joint.connectedBody = attachedRocks[attachedRocks.Count - 1];
-                joint.breakForce = 125f;
-
-                _rock.isKinematic = false;
-                _rock.useGravity = false;
-                _rock.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-                _rock.mass = 0.05f;
-                _rock.linearDamping = 0.1f;
-                _rock.angularDamping = 0.2f;
 
 
-                _rock.constraints = RigidbodyConstraints.None;
-                _rock.constraints = RigidbodyConstraints.FreezePositionY;
-                joint.breakForce = 1750f;
-                joint.breakTorque = 1750f;
-                attachedRocks.Add(_rock);
+
+                var joint = _rock.gameObject.AddComponent<FixedJoint>();
+                Debug.Log("J'attache");
+                if (attachedRocks.Count > 0)
+                {
+                    joint.connectedBody = attachedRocks[attachedRocks.Count - 1];
+                    joint.breakForce = 125f;
+
+                    _rock.isKinematic = false;
+                    _rock.useGravity = false;
+                    _rock.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    _rock.mass = 0.05f;
+                    _rock.linearDamping = 0.1f;
+                    _rock.angularDamping = 0.2f;
+
+
+                    _rock.constraints = RigidbodyConstraints.None;
+                    _rock.constraints = RigidbodyConstraints.FreezePositionY;
+                    joint.breakForce = 350f;
+                    joint.breakTorque = 350f;
+                    attachedRocks.Add(_rock);
+                }
+                else
+                {
+                    joint.connectedBody = _rb;
+
+                    joint.breakForce = 125f;
+
+                    _rock.isKinematic = false;
+                    _rock.useGravity = false;
+                    _rock.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    _rock.mass = 0.01f;
+                    _rock.linearDamping = 0.5f;
+                    _rock.angularDamping = 0.1f;
+
+
+                    _rock.constraints = RigidbodyConstraints.None;
+                    _rock.constraints = RigidbodyConstraints.FreezePositionY;
+                    joint.breakForce = 350f;
+                    joint.breakTorque = 350f;
+                    attachedRocks.Add(_rock);
+                }
             }
-            else
-            {
-                joint.connectedBody = _rb;
-                
-                joint.breakForce = 125f;
-
-                _rock.isKinematic = false;
-                _rock.useGravity = false;
-                _rock.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-                _rock.mass = 0.01f;
-                _rock.linearDamping = 0.5f;
-                _rock.angularDamping = 0.1f;
-
-
-                _rock.constraints = RigidbodyConstraints.None;
-                _rock.constraints = RigidbodyConstraints.FreezePositionY;
-                joint.breakForce = 1750f;
-                joint.breakTorque = 1750f;
-                attachedRocks.Add(_rock);
-            }
-           
         }
+        
     }
+       
+    
    
 
 }

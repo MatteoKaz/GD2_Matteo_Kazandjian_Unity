@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - AsteroidHook
+  - Astroid
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - ImageUi
   - 
   - 
   - 
@@ -41,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Atmoshere
+    uniqueID: 2247169447
     locked: 0
   - name: Planet
     uniqueID: 3599797471

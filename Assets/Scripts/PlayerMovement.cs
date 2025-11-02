@@ -9,15 +9,16 @@ public class PlayerMovement : MonoBehaviour
     private float _ForwardMovement;
     private Vector3 _movement;
     private Vector3 _grappinDirection;
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _speed = 10f;
     [SerializeField] private float _Rotspeed = 100f;
     public Vector3 _pushDirection;
     public Vector3 _grappinHit;
     private Vector3 _rotator;
-    [SerializeField] private float _maxSpeed = 25f;
+    [SerializeField] private float _maxSpeed = 15f;
     private Vector3 _CurrentSpeed;
     private float _brakeFactor = 0.1f;
     private Vector3 m_EulerAngleVelocity = new Vector3(0,65, 0);
+    [SerializeField] private Animator Reactor;
 
 
     void Start()
@@ -32,35 +33,26 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalMovement = Input.GetAxis("Horizontal");
         _verticalMovement = Input.GetAxis("Vertical");
-        //_movement = new Vector3(0f, 0f, _verticalMovement);
+        
         _ForwardMovement = Mathf.Clamp(_verticalMovement, -0.45f, 1f);
-        GrappinUpdateDiraction(_movement); //Direction donn� � la fonction grappin
-                                           // _movement.Normalize();
-                                           //_movement *= _speed;
-                                           //_movement.y = _rb.linearVelocity.y;
-                                           //Pousser des �lements comme asteroide
+        GrappinUpdateDiraction(_movement); 
         _pushDirection = _CurrentSpeed * 1.5f;
-        // _rotator = new Vector3(0f, 0f, _horizontalMovement);
-        // _rotator.Normalize();
-        //_rotator *= _Rotspeed;
+        
         _CurrentSpeed = (transform.forward * _ForwardMovement * _speed);
         
 
-        if (Input.GetKey(KeyCode.Space)) // touche frein
-            _rb.AddForce(-_rb.linearVelocity * _brakeFactor, ForceMode.Force);
+        if (Input.GetKey(KeyCode.Space))
+            _rb.AddForce(-_rb.linearVelocity *2 * _brakeFactor, ForceMode.Force);
     }
 
     void FixedUpdate()
     {
-        Quaternion deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * Time.fixedDeltaTime);
-        Quaternion deltaRotationRight = Quaternion.Euler(-m_EulerAngleVelocity * Time.fixedDeltaTime);
-        if (_rb != null)
+        Reactor.SetFloat("Speed", _verticalMovement) ;
+        Quaternion _Rotation = Quaternion.Euler(m_EulerAngleVelocity * Time.fixedDeltaTime);
+        Quaternion _RotationRight = Quaternion.Euler(-m_EulerAngleVelocity * Time.fixedDeltaTime);
+        if (_rb != null )
         {
-            //_rb.linearVelocity = _movement;
-
-            //Movement spatial avec add force garder l'inertie 
             _rb.AddForce(_CurrentSpeed, ForceMode.Force);
-            
 
         }
         else
@@ -75,22 +67,18 @@ public class PlayerMovement : MonoBehaviour
         {
             ThrowGrappin();
         }
-        //Rotation droite gauche 
-        //if (Input.GetKey(KeyCode.A)) _rotator = Vector3.down;
-        //else if (Input.GetKey(KeyCode.D)) _rotator = Vector3.up;
-        //else _rotator = Vector3.zero;
-        //transform.Rotate(_rotator * _Rotspeed * Time.deltaTime);
+        
 
         if (Input.GetKey(KeyCode.A))
         {
-            _rb.MoveRotation(_rb.rotation * deltaRotationRight);
+            _rb.MoveRotation(_rb.rotation * _RotationRight);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            _rb.MoveRotation(_rb.rotation * deltaRotation);
+            _rb.MoveRotation(_rb.rotation * _Rotation);
         }
             
-        //clamp pour eviter une vitesse trop haute vu qu'on utilise un add force
+        
         float _CurrentVel = _rb.linearVelocity.magnitude;
         if (_CurrentVel > _maxSpeed)
         {
@@ -99,8 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (_CurrentVel < 4)
         {
-            _speed = 5f;
-            _maxSpeed = 10f;
+            _speed = 10f;
+            _maxSpeed = 15f;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+           
         }
 
     }

@@ -11,7 +11,7 @@ public class HitCubeLittle : MonoBehaviour
     private float impulseValue = 2;
     private Vector3 _playerVectorForward;
     private Vector3 _DeathLocation;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     public static Action<Vector3> OnAsteroidDestroy;
 
 
