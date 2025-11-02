@@ -56,3 +56,7 @@ La mort du joueur si y a le temps
 31/10 
 
 Ajout d'une mort pour le joueur et du menu de mort, et des spawner d'asteroides. 
+
+1/10
+
+Ajout des differents menu, switch entre les levels, ajout de feedback. Objectif fin de game.
