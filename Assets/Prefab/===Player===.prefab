@@ -524,7 +524,7 @@ MonoBehaviour:
   _firepoint: {fileID: 1232309042893010456}
   _bullet: {fileID: 3651738432718088635, guid: 56887518208484741ac317795dcb7992, type: 3}
   _bulletForce: 25
-  _CamRef: {fileID: 0}
+  _CamRef: {fileID: 8460668044314952966, guid: 0be0ceae70a75ee4bb3766489b50bb76, type: 3}
 --- !u!65 &6981783702532441660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   player: {fileID: 4333751191485064512}
   decreaseFactor: 1
   soundRocketDuration: 1
-  _CamRef: {fileID: 0}
+  _CamRef: {fileID: 8460668044314952966, guid: 0be0ceae70a75ee4bb3766489b50bb76, type: 3}
 --- !u!114 &5899318754194293629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,11 +579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c4cd8eca2f12541988a38554c38bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathUiRef: {fileID: 0}
+  DeathUiRef: {fileID: 7140842810619514546, guid: de121e94dc043674dacce49aee800aed, type: 3}
   _Life: 3
-  _uiController: {fileID: 0}
+  _uiController: {fileID: 2481809389736584641, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
   _Explosion: {fileID: 1751487753414317520}
-  _CamRef: {fileID: 0}
+  _CamRef: {fileID: 8460668044314952966, guid: 0be0ceae70a75ee4bb3766489b50bb76, type: 3}
   _MaxLife: 3
 --- !u!81 &7543040146092587683
 AudioListener:

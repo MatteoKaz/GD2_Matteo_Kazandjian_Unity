@@ -77,7 +77,7 @@ MonoBehaviour:
   _AsteroidChild: {fileID: 5479953281250828080, guid: d8e6d2fc5e5662540b6860d72ea34acb, type: 3}
   _Life: {fileID: 6259624126728161385, guid: 8b86e15ee5ec3c74cb51fdd83372ee28, type: 3}
   _SoundDestroy: {fileID: 2708461068026282253, guid: 06a4990d69fa0b548a0c7786acba4155, type: 3}
-  _Force: 14
+  _Force: 16
 --- !u!54 &8823855030605420956
 Rigidbody:
   m_ObjectHideFlags: 0

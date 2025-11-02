@@ -5,7 +5,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private TMP_Text _scoreTEXT;
     [SerializeField] private TMP_Text _LifeTEXT;
-    [SerializeField] private int Goal = 10;
+    [SerializeField] private int Goal = 15;
     public ScoreDataS _ScoreData;
     
 

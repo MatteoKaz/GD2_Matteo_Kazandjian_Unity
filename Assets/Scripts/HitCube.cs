@@ -17,13 +17,14 @@ public class HitCube : MonoBehaviour
      [SerializeField] private GameObject _Explosion;
     [SerializeField] private GameObject _player;
     [SerializeField] public int n_numbertoSpawn = 3;
-    private float _shadowDuration = 0.04f;
+    private float _shadowDuration = 0.05f;
     [SerializeField] public GameObject _AsteroidChild;
     [SerializeField] public GameObject _Life;
     private Vector3 _RotationSprite = new Vector3(90, 0, 0);
     private Quaternion newQuat = new Quaternion();
     public GameObject _SoundDestroy;
     public float _Force = 10f;
+    private bool _isDestroyed = false;
 
     void Start()
     {
@@ -41,9 +42,10 @@ public class HitCube : MonoBehaviour
         Vector3 dir = (playerPos - spawnPos).normalized;
         Vector3 force = dir * dist ;
         _rb.AddForce(force * _Force, ForceMode.Force);
+
     }
 
-
+    
     private void OnCollisionEnter(Collision other)
     {
         _playerVectorForward = GameObject.Find("===Player===").GetComponent<PlayerMovement>()._pushDirection;
@@ -78,48 +80,51 @@ public class HitCube : MonoBehaviour
     }
     private void SpawnNewWall(Vector3 _DeathLocation)
     {
-        for (int i = 3; i > 0; i--)
-        {
+        
+       
 
             StartCoroutine(ShadowTimerControl());
             n_numbertoSpawn--;
 
-            if (n_numbertoSpawn == 1)
-            {
-                int _Random = Random.Range(0, 4);
-                
-                if (_Random == 0)
-                {
-                    Instantiate(_Life, transform.position, newQuat);
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                Destroy(gameObject);
-            }
-        }
+           
+        
         
         
     }
     private IEnumerator ShadowTimerControl()
     //vous pouvez mettre un delay dans une fonction, 
     {
+        for (int i = 3; i > 0; i--)
+        {
+            GameObject _Asteroidmini = Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
+            Rigidbody _rb = _Asteroidmini.GetComponent<Rigidbody>();
 
-        Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
-        Rigidbody _rb = _AsteroidChild.GetComponent<Rigidbody>();
-
-        var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-75.0f, 75.0f));
-        _rb.AddForce(position * 250, ForceMode.Impulse);
-        n_numbertoSpawn--;
-
-        
+            var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-75.0f, 75.0f));
+            _rb.AddForce(position * 0.05f, ForceMode.Impulse);
+            n_numbertoSpawn--;
+            
+               
+ 
             yield return new WaitForSeconds(_shadowDuration);
-        
+        }
+        int _Random = Random.Range(0, 4);
 
-       
+        if (_Random == 0)
+        {
+            Instantiate(_Life, transform.position, newQuat);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        Destroy(gameObject);
     }
+
+
+
+
+
 
     private void PushCube(float impulse)
     {

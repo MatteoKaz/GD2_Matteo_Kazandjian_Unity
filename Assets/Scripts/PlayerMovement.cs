@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
        
         {
             _CamRef.fieldOfView = Mathf.Lerp(_CamRef.fieldOfView, _CurrentFov, Time.deltaTime * 4);
+            Debug.Log("Rapeticie");
         }
 
     }

@@ -26,7 +26,7 @@ public class Damage : MonoBehaviour
 
                 _HasDamage = true;
                 other.gameObject.GetComponent<DeathPlayer>().UpdateLife(_Damage);
-                Debug.Log("kk");
+                
             }
         }
 

@@ -50,58 +50,97 @@ MonoBehaviour:
     volume: 0.267
     pitch: 1
     loop: 0
+    spatialBlend: 0.5
+    minDistance: 0
+    maxDistance: 45
     source: {fileID: 0}
   - name: Theme
     clip: {fileID: 8300000, guid: 2db6b5a061b37234496570b938a5093e, type: 3}
     volume: 0.248
     pitch: 1
     loop: 1
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: PlayerShoot
     clip: {fileID: 8300000, guid: ab816d6bb1e00ea4a85992a238101a58, type: 3}
     volume: 0.212
     pitch: 1
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Rocket
     clip: {fileID: 8300000, guid: d05e94c430c3fd240abec5dbb7512cae, type: 3}
     volume: 0.085
     pitch: 1
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Impact
     clip: {fileID: 8300000, guid: 4e0c0e2fb6c2d6e41bd58635e52d2bb2, type: 3}
     volume: 0.054
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Impact
     clip: {fileID: 8300000, guid: 4e0c0e2fb6c2d6e41bd58635e52d2bb2, type: 3}
     volume: 0.025
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Magnet
     clip: {fileID: 8300000, guid: 84d9e2848c124584db34ec41e2e59a6f, type: 3}
     volume: 0.083
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Teleport
     clip: {fileID: 8300000, guid: cb9a301baf18f874bae922ccdfea81b4, type: 3}
     volume: 0.116
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Attach
     clip: {fileID: 8300000, guid: e9679602af542034cbcffd7044477d4b, type: 3}
     volume: 0.116
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}
   - name: Earn
     clip: {fileID: 8300000, guid: 1a66f84e901369f4bbe5f7ebcad87d70, type: 3}
     volume: 0.116
     pitch: 1.086
     loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: ce093293652d0db4a9b96992da306f23, type: 3}
+    volume: 0.116
+    pitch: 1.086
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    maxDistance: 0
     source: {fileID: 0}

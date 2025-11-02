@@ -19,16 +19,25 @@ public class DestroyAsteroid : MonoBehaviour
         if (other.CompareTag("Astroid"))
         {
             GameObject Asteroid = other.GetComponent<Rigidbody>().gameObject;
-            
+
             Instantiate(_Explosion, other.transform.position, newQuat);
             Instantiate(_SoundDestroy, transform.position, transform.rotation);
             Destroy(Asteroid);
         }
+        if (other.GetComponent<HitCubeLittle>() != null) 
+        {
+            Debug.Log("Enrer");
+            GameObject _Asteroid = other.GetComponent<Rigidbody>().gameObject;
+            Instantiate(_Explosion, other.transform.position, newQuat);
+            Instantiate(_SoundDestroy, transform.position, transform.rotation);
+            Destroy(_Asteroid);
 
+        }
     }
+       
 
 
-    
+
 }
 
 

@@ -31,11 +31,11 @@ public class DeathPlayer : MonoBehaviour
         if (_Life !=0)
         {
             _Life -= value;
-            Debug.Log("_Life");
+            
             DamageTaken?.Invoke(_Life);
             _Explosion.SetActive(true);
             _CamRef.shakeDuration = 0.5f;
-            FindObjectOfType<Audiomanager>().Play("DamagePlayer");
+            FindObjectOfType<Audiomanager>().Play("DeathPlayer");
             StartCoroutine(DeactivateExplosion()); ;
         }
         if (_Life <= 0) 
