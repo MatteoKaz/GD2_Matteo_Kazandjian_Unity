@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class SpawnerAsteroid : MonoBehaviour
 {
     [SerializeField] public GameObject _Asteroid;
-    private float SpawnerTime = 10f;
+    private float SpawnerTime = 7.5f;
     private Vector3 _RotationSprite = new Vector3(90, 0, 0);
     private Quaternion newQuat = new Quaternion();
     private int _currentSpawnCount = 0;

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 277946503011372154}
   - component: {fileID: 5434397754678294185}
-  - component: {fileID: 7087533163473926437}
   - component: {fileID: 7937746869242635838}
   - component: {fileID: 3074853958380985047}
+  - component: {fileID: 8460668044314952966}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2463142333802871612}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.23000002, y: 12.01, z: -0.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.39688775, y: 0.39688775, z: 1.2358687}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,7 +68,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 179
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -86,14 +86,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7087533163473926437
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2463142333802871612}
-  m_Enabled: 1
 --- !u!114 &7937746869242635838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +157,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8460668044314952966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463142333802871612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd1524516b336145934af10b3a35cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  moveSpeed: 10
+  velocity: {x: 0, y: 0, z: 0}
+  shakeDuration: 0
+  shakeAmount: 0.7
+  decreaseFactor: 1

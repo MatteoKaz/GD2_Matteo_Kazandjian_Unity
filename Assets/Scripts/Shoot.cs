@@ -27,6 +27,7 @@ public class Shoot : MonoBehaviour
 
     private void Shooting()
     {
+        FindObjectOfType<Audiomanager>().Play("PlayerShoot");
         GameObject bulletRef = Instantiate(_bullet, _firepoint.position, _firepoint.rotation);
         Rigidbody _rb = bulletRef.GetComponent<Rigidbody>();
         _rb.AddForce(-_firepoint.up * _bulletForce, ForceMode.Impulse);

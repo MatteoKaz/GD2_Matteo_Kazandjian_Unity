@@ -25,6 +25,7 @@ public class HitCubeLittle : MonoBehaviour
                 _life -= 1;
                 if(other.gameObject.GetComponent<PlayerCollect>() != null)
                 PushCube(150);
+                FindObjectOfType<Audiomanager>().Play("Impact");
                 Debug.Log("Touché");
 
 
@@ -34,7 +35,8 @@ public class HitCubeLittle : MonoBehaviour
             {
                 
                 Destroy(gameObject);
-                
+                FindObjectOfType<Audiomanager>().Play("DeathPlayer");
+
             }
         }
         if (other.gameObject.GetComponent<PlayerCollect>() != null)

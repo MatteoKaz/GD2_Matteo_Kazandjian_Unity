@@ -14,6 +14,7 @@ public class LifeGiver : MonoBehaviour
             {
 
                 _HasDamage = true;
+                FindObjectOfType<Audiomanager>().Play("Heal"); 
                 other.gameObject.GetComponent<DeathPlayer>().GiveLife(_LifeAmount);
                 Destroy(gameObject);
             }

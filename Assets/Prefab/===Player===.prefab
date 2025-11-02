@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 6981783702532441660}
   - component: {fileID: 1236415043777566103}
   - component: {fileID: 5899318754194293629}
+  - component: {fileID: 7543040146092587683}
   m_Layer: 0
   m_Name: ===Player===
   m_TagString: Player
@@ -373,7 +374,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.86, y: 3, z: 2.93}
-  m_LocalScale: {x: 0.39688775, y: 0.39688775, z: 1.2358687}
+  m_LocalScale: {x: 0.5126599, y: 0.5126599, z: 1.5963717}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5166095924582772371}
@@ -505,6 +506,9 @@ MonoBehaviour:
   _grappinHit: {x: 0, y: 0, z: 0}
   _maxSpeed: 15
   Reactor: {fileID: 8953276149686455519}
+  decreaseFactor: 1
+  soundRocketDuration: 1
+  _Cam: {fileID: 2463142333802871612, guid: 0be0ceae70a75ee4bb3766489b50bb76, type: 3}
 --- !u!114 &1097132116928521834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +544,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.89, y: 2.36, z: 2.4}
+  m_Size: {x: 6.05, y: 2.33, z: 3.01}
   m_Center: {x: 0, y: 0, z: -1.99}
 --- !u!114 &1236415043777566103
 MonoBehaviour:
@@ -557,8 +561,12 @@ MonoBehaviour:
   _HookRadius: 12
   _attachDistance: 1.2
   attachRoot: {fileID: 563449696395249926}
+  OldRoot: {fileID: 0}
   _rb: {fileID: 3892819335832000085}
   player: {fileID: 4333751191485064512}
+  decreaseFactor: 1
+  soundRocketDuration: 1
+  _CamRef: {fileID: 0}
 --- !u!114 &5899318754194293629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +585,14 @@ MonoBehaviour:
   _Explosion: {fileID: 1751487753414317520}
   _CamRef: {fileID: 0}
   _MaxLife: 3
+--- !u!81 &7543040146092587683
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4333751191485064512}
+  m_Enabled: 1
 --- !u!1 &6528254292514891935
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,8 +620,8 @@ Transform:
   m_GameObject: {fileID: 6528254292514891935}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.26, y: -0.1, z: -1.31}
-  m_LocalScale: {x: 1.191544, y: 0.3165742, z: 0.63494337}
+  m_LocalPosition: {x: -0.09, y: -0.1, z: -1.686}
+  m_LocalScale: {x: 2.1605077, y: 0.57401234, z: 1.1512793}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7289941126869865754}

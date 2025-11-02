@@ -35,14 +35,17 @@ public class DeathPlayer : MonoBehaviour
             DamageTaken?.Invoke(_Life);
             _Explosion.SetActive(true);
             _CamRef.shakeDuration = 0.5f;
+            FindObjectOfType<Audiomanager>().Play("DamagePlayer");
             StartCoroutine(DeactivateExplosion()); ;
         }
         if (_Life <= 0) 
         {
             _CamRef.shakeDuration = 0.8f;
             _Explosion.SetActive(true);
-            StartCoroutine(DeathUi());
             
+            StartCoroutine(DeathUi());
+            FindObjectOfType<Audiomanager>().Play("DeathPlayer");
+
         }
 
 

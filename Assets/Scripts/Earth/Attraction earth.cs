@@ -5,6 +5,7 @@ public class Attractionearth : MonoBehaviour
     public float _HookRadius = 2f;
     public PlayerMovement _Playermovement;
     private bool _hasAccellerate = false;
+    [SerializeField] private float _attractionForce = 16f;
 
     public Transform attachRoot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +25,7 @@ public class Attractionearth : MonoBehaviour
 
 
         Rigidbody _rockRb = other.attachedRigidbody;
-        if (_rockRb != null) ;
+        if (_rockRb != null) 
         {
             float dist = Vector3.Distance(transform.position, other.transform.position);
 
@@ -33,9 +34,9 @@ public class Attractionearth : MonoBehaviour
             if (dist < _HookRadius )
             {
                 Vector3 dir = (attachRoot.position - _rockRb.position).normalized;
-                Vector3 force = dir / dist * 16f;
+                Vector3 force = dir / dist * _attractionForce;
                 _rockRb.AddForce(force, ForceMode.Force);
-                Debug.Log("J'attire");
+                
             }
         }
 
@@ -44,7 +45,8 @@ public class Attractionearth : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (_Playermovement != null)
+        
+        if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
             
             if (_hasAccellerate == false)
@@ -58,9 +60,9 @@ public class Attractionearth : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (_Playermovement != null)
+        if (other.gameObject.GetComponent<PlayerMovement>() != null)
         {
-            _Playermovement.Decelerate();
+            
             _hasAccellerate = false;
         }
 

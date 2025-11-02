@@ -10,6 +10,7 @@ public class PlayerCollect : MonoBehaviour
 
     public void UpdateScore(int value)
     {
+        FindObjectOfType<Audiomanager>().Play("Earn");
         _scoreData.ScoreValue = Mathf.Clamp(_scoreData.ScoreValue + value, min:0, max: _scoreData.ScoreValue+ value);
         OnTargetCollected?.Invoke(_scoreData.ScoreValue); 
         Debug.Log(_scoreData.ScoreValue);

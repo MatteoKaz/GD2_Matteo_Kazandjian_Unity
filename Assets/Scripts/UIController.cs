@@ -6,7 +6,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text _scoreTEXT;
     [SerializeField] private TMP_Text _LifeTEXT;
     [SerializeField] private int Goal = 10;
-
+    public ScoreDataS _ScoreData;
+    
 
     //Fonction actier à chaque activation du MonoBehaviour
     private void OnEnable()
@@ -28,6 +29,10 @@ public class UIController : MonoBehaviour
     {
         UpdateScore(0);
         UpdateLife(3);
+        if (_ScoreData != null)
+        {
+            _ScoreData.ScoreValue = 0;
+        }
     }
 
     public void UpdateScore(int newScore)

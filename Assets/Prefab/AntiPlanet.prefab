@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Explosion: {fileID: 6406745654314614994, guid: 7bd94fa6b19e658429f235694268f7ff, type: 3}
+  _SoundDestroy: {fileID: 2708461068026282253, guid: 06a4990d69fa0b548a0c7786acba4155, type: 3}
 --- !u!135 &8000804794412915607
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _HookRadius: 180
   _Playermovement: {fileID: 0}
+  _attractionForce: 16
   attachRoot: {fileID: 670402393139130100}
 --- !u!1 &8845043003938812050
 GameObject:

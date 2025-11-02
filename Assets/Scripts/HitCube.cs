@@ -22,17 +22,25 @@ public class HitCube : MonoBehaviour
     [SerializeField] public GameObject _Life;
     private Vector3 _RotationSprite = new Vector3(90, 0, 0);
     private Quaternion newQuat = new Quaternion();
+    public GameObject _SoundDestroy;
+    public float _Force = 10f;
 
     void Start()
     {
+        
         newQuat.eulerAngles = _RotationSprite;
         Vector3 playerPos = GameObject.Find("===Player===").GetComponent<PlayerMovement>().transform.position;
+         playerPos = new Vector3(
+    playerPos.x + Random.Range(-25f, 25f),
+    playerPos.y,
+    playerPos.z + Random.Range(-25f, 25f)
+         );
         _rb = GetComponent<Rigidbody>();
          spawnPos =  _rb.transform.position;
         float dist = Vector3.Distance(playerPos, spawnPos);
         Vector3 dir = (playerPos - spawnPos).normalized;
-        Vector3 force = dir / dist * 650f;
-        _rb.AddForce(force * 45, ForceMode.Force);
+        Vector3 force = dir * dist ;
+        _rb.AddForce(force * _Force, ForceMode.Force);
     }
 
 
@@ -46,6 +54,7 @@ public class HitCube : MonoBehaviour
                 _life -= 1;
                 if(other.gameObject.GetComponent<PlayerCollect>() != null)
                 PushCube(150);
+                FindObjectOfType<Audiomanager>().Play("Impact");
                 Debug.Log("Touché");
                 
 
@@ -56,8 +65,10 @@ public class HitCube : MonoBehaviour
             {
                 _DeathLocation = transform.position;
                 //OnAsteroidDestroy?.Invoke(_DeathLocation);
-                SpawnNewWall(_DeathLocation);
+                Instantiate(_SoundDestroy, _DeathLocation, newQuat);
                 Instantiate(_Explosion, transform.position, newQuat);
+                SpawnNewWall(_DeathLocation);
+                
                 
                 
             }
