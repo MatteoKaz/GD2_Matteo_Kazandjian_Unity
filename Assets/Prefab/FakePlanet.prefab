@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Explosion: {fileID: 6406745654314614994, guid: 7bd94fa6b19e658429f235694268f7ff, type: 3}
+  _SoundDestroy: {fileID: 2708461068026282253, guid: 06a4990d69fa0b548a0c7786acba4155, type: 3}
 --- !u!114 &3999388661538647426
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class HitCube : MonoBehaviour
     public GameObject _SoundDestroy;
     public float _Force = 10f;
     private bool _isDestroyed = false;
+    private bool Dead = false;
 
     void Start()
     {
@@ -65,11 +66,17 @@ public class HitCube : MonoBehaviour
             }
             else
             {
-                _DeathLocation = transform.position;
-                //OnAsteroidDestroy?.Invoke(_DeathLocation);
-                Instantiate(_SoundDestroy, _DeathLocation, newQuat);
-                Instantiate(_Explosion, transform.position, newQuat);
-                SpawnNewWall(_DeathLocation);
+                 
+                if (Dead == false)
+                {
+                    Dead = true;
+                    _DeathLocation = transform.position;
+                    //OnAsteroidDestroy?.Invoke(_DeathLocation);
+                    Instantiate(_SoundDestroy, _DeathLocation, newQuat);
+                    Instantiate(_Explosion, transform.position, newQuat);
+                    SpawnNewWall(_DeathLocation);
+                }
+                
                 
                 
                 
@@ -96,12 +103,17 @@ public class HitCube : MonoBehaviour
     {
         for (int i = 3; i > 0; i--)
         {
-            GameObject _Asteroidmini = Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
-            Rigidbody _rb = _Asteroidmini.GetComponent<Rigidbody>();
+            if (n_numbertoSpawn >= 0)
+            {
+                GameObject _Asteroidmini = Instantiate(_AsteroidChild, transform.position, Quaternion.identity);
+                Rigidbody _rb = _Asteroidmini.GetComponent<Rigidbody>();
 
-            var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-75.0f, 75.0f));
-            _rb.AddForce(position * 0.05f, ForceMode.Impulse);
-            n_numbertoSpawn--;
+                var position = new Vector3(Random.Range(-45.0f, 45.0f), transform.position.y, Random.Range(-75.0f, 75.0f));
+                _rb.AddForce(position * 0.05f, ForceMode.Impulse);
+                n_numbertoSpawn--;
+            }
+            
+            Debug.Log("Spawn");
             
                
  

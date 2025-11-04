@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
-  _Rotspeed: 100
+  _Rotspeed: 115
   _pushDirection: {x: 0, y: 0, z: 0}
   _grappinHit: {x: 0, y: 0, z: 0}
   _maxSpeed: 15

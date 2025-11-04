@@ -31,6 +31,7 @@ public class AlienReveal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<Audiomanager>().Play("AlienPlanet");
             _initialPose = transform.position;
          _FakeScore.enabled = false;
         _EarthRenderer.enabled = false;
@@ -41,7 +42,7 @@ public class AlienReveal : MonoBehaviour
         float dist = Vector3.Distance(playerPos, spawnPos);
         Vector3 dir = (playerPos - spawnPos).normalized;
         Vector3 force = dir / dist * 650f;
-        _rb.AddForce(force * 150, ForceMode.Force);
+        _rb.AddForce(force * 250, ForceMode.Force);
             _Enter = true;
         }
     }

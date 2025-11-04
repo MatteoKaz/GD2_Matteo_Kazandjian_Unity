@@ -187,7 +187,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5303837380077305358}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -198,7 +198,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -945,6 +945,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 302205539665897923, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 302205539665897923, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
@@ -984,8 +988,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: ===HUD=== (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2481809389736584641, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
+      propertyPath: _ScoreData
+      value: 
+      objectReference: {fileID: 11400000, guid: bfa10217caa2a9f4c89520e4fcd757fa, type: 2}
     - target: {fileID: 4395394426015744576, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395394426015744576, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395394426015744576, guid: 189df9e0cc1712242b226255f8faa1ae, type: 3}
+      propertyPath: m_OverridePixelPerfect
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

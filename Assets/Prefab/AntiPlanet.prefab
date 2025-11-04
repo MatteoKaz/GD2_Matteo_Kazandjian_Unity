@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _HookRadius: 180
-  _Playermovement: {fileID: 0}
+  _Playermovement: {fileID: 2304904073658018005, guid: 4395a6e8dffbab047a1ff1ac69c92f86, type: 3}
   _attractionForce: 16
   attachRoot: {fileID: 670402393139130100}
 --- !u!1 &8845043003938812050

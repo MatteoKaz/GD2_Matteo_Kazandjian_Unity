@@ -21,7 +21,7 @@ public class Shoot : MonoBehaviour
         {
             Shooting();
         }
-        Debug.DrawRay(transform.position, _forwardPlayer * 150f, Color.green);
+       
         
     }
 

@@ -9,7 +9,7 @@ public class Hook : MonoBehaviour
     public Transform attachRoot;
     public Transform OldRoot;
     public Rigidbody _rb;
-    private List<Rigidbody> attachedRocks = new List<Rigidbody>();
+    public List<Rigidbody> attachedRocks = new List<Rigidbody>();
     [SerializeField] public GameObject player;
     private bool ReactorSound = false;
     public float decreaseFactor = 1.0f;
@@ -141,8 +141,8 @@ public class Hook : MonoBehaviour
 
                         _rock.constraints = RigidbodyConstraints.None;
                         _rock.constraints = RigidbodyConstraints.FreezePositionY;
-                        joint.breakForce = 1350f;
-                        joint.breakTorque = 1350f;
+                        joint.breakForce = 10000f;
+                        joint.breakTorque = 10000f;
                         attachedRocks.Add(_rock);
                         player.GetComponent<PlayerMovement>().DecreaseRotation();
                     }
@@ -164,8 +164,8 @@ public class Hook : MonoBehaviour
 
                         _rock.constraints = RigidbodyConstraints.None;
                         _rock.constraints = RigidbodyConstraints.FreezePositionY;
-                        joint.breakForce = 1350f;
-                        joint.breakTorque = 1350f;
+                        joint.breakForce = 10000f;
+                        joint.breakTorque = 10000f;
                         attachedRocks.Add(_rock);
                         player.GetComponent<PlayerMovement>().DecreaseRotation();
                     }

@@ -15,14 +15,45 @@ public class TeleportePlayer : MonoBehaviour
     [SerializeField] private CameraFollow _CamRef;
     [SerializeField] private int _MaxLife = 3;
     [SerializeField] private GameObject _BlackHole;
-  
+    [SerializeField] private GameObject _BlackHolePlayer;
+    private GameObject Player;
+    private Hook Hookref;
+
+    private void Start()
+    {
+
+         Player = GameObject.Find("===Player===");
+        Hookref = Player.GetComponent<Hook>();
+    }
     private void OnCollisionEnter(Collision other)
     {
 
         
         {
             FindObjectOfType<Audiomanager>().Play("Teleport");
-            other.transform.position = _BlackHole.transform.position;
+            if (other.gameObject.GetComponent<PlayerMovement>() != null || other.gameObject.GetComponent<HitCubeLittle>() != null)
+            {
+
+                if (Hookref.attachedRocks.Count != 0)
+                {
+                    foreach (Rigidbody rb in Hookref.attachedRocks)
+                    {
+                        other.transform.position = _BlackHolePlayer.transform.position;
+                        rb.transform.position = _BlackHolePlayer.transform.position;
+                    }
+
+                }
+                else
+                {
+                    other.transform.position = _BlackHolePlayer.transform.position;
+                }
+                    
+            }
+            else
+            {
+                other.transform.position = _BlackHole.transform.position;
+            }
+                
                 
           
         }
