@@ -1,6 +1,29 @@
 Cours de GD2 sur les bases d'Unity
 
 
+Controle 
+
+-Z avancer
+
+-AD tourner
+
+-S reculer
+
+-espace freiner
+
+-Maintien E de dos permet d'attirer les petits asteroides une fois les gros détruit
+
+-Maintien F lacher les asteroides
+
+-Clique gauche tirer
+
+-But ramener les asteroides sur la planete terre 
+
+
+
+
+
+
 Mon projet Roll Ball 
 
 Le joueur controle un petit vaisseau qui a pour but de ramener de la pierre sur la planete terre. En detruisant des asteroides le joueur pourra rattacher les rochers à l'arriere de son vaisseau. Ensuite le joueur devra ramener la pierre jusqu'a sa planete. En faisant ainsi celle ci s'ameliorera jusqu'a atteindre l'objectif du niveau.
