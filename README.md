@@ -2,13 +2,21 @@ Cours de GD2 sur les bases d'Unity
 
 
 Controle 
+
 -Z avancer
+
 -AD tourner
+
 -S reculer
+
 -espace freiner
+
 -Maintien E de dos permet d'attirer les petits asteroides une fois les gros détruit
+
 -Maintien F lacher les asteroides
+
 -Clique gauche tirer
+
 -But ramener les asteroides sur la planete terre 
 
 
